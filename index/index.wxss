@@ -1,0 +1,47 @@
+.progressbar {
+  position: relative;
+  margin: 100px auto;
+  width: 100px;
+  height: 100px;
+  border: 20px solid #ccc;
+  border-radius: 50%;
+}
+
+.left-container, .right-container {
+  position: absolute;
+  width: 70px;
+  height: 140px;
+  top: -20px;
+  overflow: hidden;
+}
+
+.left-container {
+  left: -20px;
+}
+
+.right-container {
+  right: -20px;
+}
+
+.left-circle, .right-circle {
+  position: absolute;
+  top: 0;
+  width: 100px;
+  height: 100px;
+  border: 20px solid transparent;
+  border-radius: 50%;
+  transform: rotate(-135deg);
+  transition: all 0.5s linear;
+}
+
+.left-circle {
+  left: 0;
+  border-bottom: 20px solid blue;
+  border-left: 20px solid blue;
+}
+
+.right-circle {
+  border-top: 20px solid blue;
+  border-right: 20px solid blue;
+  right: 0;
+}

@@ -1,0 +1,8 @@
+<view class="progressbar">
+  <view class="left-container">
+    <view class="left-circle" style='transform: {{left_circle_transform}}; transition: {{left_circle_transition}}'></view>
+  </view>
+  <view class="right-container">
+    <view class="right-circle" style='transform: {{right_circle_transform}}; transition: {{right_circle_transition}}'></view>
+  </view>
+</view>
