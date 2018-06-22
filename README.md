@@ -2,6 +2,7 @@
 
 通过css实现的圆形进度条
 
+![img](https://github.com/petronny/wxapp-annular-progressbar/raw/master/screenshot.png)
 ### 代码片段链接
 
 wechatide://minicode/17lHxmmh7t7O
