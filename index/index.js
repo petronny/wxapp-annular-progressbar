@@ -115,11 +115,11 @@ Page({
   onReady: function() {
     let _this = this;
     setTimeout(function() {
-      _this.setProgressbar(20)
+      _this.setProgressbar(40)
       setTimeout(function() {
-        _this.setProgressbar(40)
+        _this.setProgressbar(60)
         setTimeout(function() {
-          _this.setProgressbar(80)
+          _this.setProgressbar(40)
           setTimeout(function() {
             _this.setProgressbar(0)
           }, 1000)
