@@ -1,8 +1,9 @@
 <view class="progressbar">
   <view class="left-container">
-    <view class="left-circle" style='transform: {{left_circle_transform}}; transition: {{left_circle_transition}}'></view>
+    <view class="left-circle" style='transform: rotate({{left_circle_transform}}deg); transition: all {{left_circle_transition}}s linear'></view>
   </view>
   <view class="right-container">
-    <view class="right-circle" style='transform: {{right_circle_transform}}; transition: {{right_circle_transition}}'></view>
+    <view class="right-circle" style='transform: rotate({{right_circle_transform}}deg); transition: all {{right_circle_transition}}s linear'></view>
   </view>
+  <view class="message" bindtap='unlock'>{{message}}</view>
 </view>
