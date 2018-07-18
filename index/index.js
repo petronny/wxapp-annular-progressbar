@@ -18,12 +18,9 @@ Page({
         let progressbar = 1;
 
         let right_transform = _this.data.right_circle_transform;
-
-        // console.log("right_transform === " + right_transform)
         if (right_transform > -180) {
             return;
         }
-        console.log("right_transform === " + right_transform)
         _this.setData({
             button_text: '请投袋',
             message: '请勿关闭小程序',
@@ -35,8 +32,6 @@ Page({
         var interval = setInterval(function() {
             _this.setProgressbar(progressbar);
             cur_opacity += opacity_change;
-
-            // console.log("cur_opacity === " + cur_opacity)
             _this.setData({
                 progressbar_opacity: cur_opacity,
             })
@@ -57,7 +52,7 @@ Page({
                 right_circle_transform: -180,
                 right_circle_transition: 0,
                 button_text: '归还完成',
-                is_give_back: true,    //归还是否成功
+                is_give_back: true,
                 progressbar_opacity: 0.6,
                 message: '点击按钮继续归还',
                 message_color: 'dodgerblue',
