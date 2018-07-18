@@ -9,7 +9,7 @@ Page({
         is_put_in: false,    //是否投袋
         is_give_back: false,    //归还是否成功
         button_text: '点我开启',
-        progressbar_opacity: 0.6,
+        progressbar_opacity: 0.7,
         message: '点击按钮开始归还',
         message_color: 'dodgerblue',
     },

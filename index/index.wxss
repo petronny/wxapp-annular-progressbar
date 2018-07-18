@@ -26,17 +26,16 @@
 }
 
 .right-container {
-    /*Step5 把父级DIV用"clip:rect"遮罩为一半*/
     clip: rect(auto auto auto calc(var(--foo)));
 }
 
 .left-circle, .right-circle {
-    /*Step1 普通的正方形*/
+    background: radial-gradient(rgb(248, 60, 116), rgb(241, 49, 126), rgba(248, 58, 105, 0.548), rgba(245, 196, 208, 0.548), #fff, #fff);
+    border: 1px dodgerblue;
     top: 0;
     width: 100%;
     padding-bottom: 100%;
     background-color: blue;
-    /*Step2 用"border-radius"实现圆形*/
     border-top-left-radius: 50%;
     border-top-right-radius: 50%;
     border-bottom-right-radius: 50%;
@@ -55,9 +54,7 @@
     background-color: rgb(248, 60, 116);
 }
 
-/*Step11 加入一个圆形覆盖在最上面，形成圆环形式*/
-
-.button_text {
+.button {
     width: 60%;
     height: 60%;
     margin: 20%;

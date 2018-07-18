@@ -5,6 +5,6 @@
     <view class="right-container">
         <view class="right-circle" style='transform: rotate({{right_circle_transform}}deg); transition: all {{right_circle_transition}}s linear; opacity:{{progressbar_opacity}}'></view>
     </view>
-    <view class="button_text" bindtap='give_back'>{{button_text}}</view>
+    <view class="button" bindtap='give_back'>{{button_text}}</view>
 </view>
 <view class="message" style='color:{{message_color}}'>{{message}}</view>
