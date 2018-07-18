@@ -1,69 +1,78 @@
 .progressbar {
-  position: relative;
-  margin: 100px auto;
-  width: 120px;
-  height: 120px;
+    position: relative;
+    margin: 30% auto;
+    --gap: 50%;
+    width: calc(var(--gap));
+    padding-bottom: calc(var(--gap));
+    height: 0;
+    --foo: 25vw; /* 是（--gap）/10*5 */
 }
 
 .left-container, .right-container {
-  border-top-left-radius: 50%;
-  border-top-right-radius: 50%;
-  border-bottom-right-radius: 50%;
-  border-bottom-left-radius: 50%;
-  width: 120px;
-  height: 120px;
-  background-color: white;
-  position: absolute;
-  box-shadow: 0px 0px 2px dodgerblue inset;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    position: absolute;
+    box-shadow: 0 0 0.5vw dodgerblue inset;
+    background: radial-gradient(#fff, rgb(181, 239, 253), rgb(181, 239, 253), rgb(181, 239, 253), #fff, #fff, rgb(181, 239, 253), rgb(181, 239, 253), rgb(181, 239, 253));
 }
 
 .left-container {
-  clip: rect(auto 60px auto auto);
+    clip: rect(auto calc(var(--foo)) auto auto);
 }
 
 .right-container {
-  /*Step5 把父级DIV用"clip:rect"遮罩为一半*/
-  clip: rect(auto auto auto 60px);
+    /*Step5 把父级DIV用"clip:rect"遮罩为一半*/
+    clip: rect(auto auto auto calc(var(--foo)));
 }
 
 .left-circle, .right-circle {
-  /*Step1 普通的正方形*/
-  width: 120px;
-  height: 120px;
-  background-color: blue;
-  /*Step2 用"border-radius"实现圆形*/
-  border-top-left-radius: 50%;
-  border-top-right-radius: 50%;
-  border-bottom-right-radius: 50%;
-  border-bottom-left-radius: 50%;
-  position: absolute;
+    /*Step1 普通的正方形*/
+    top: 0;
+    width: 100%;
+    padding-bottom: 100%;
+    background-color: blue;
+    /*Step2 用"border-radius"实现圆形*/
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+    position: absolute;
 }
 
 .left-circle {
-  clip: rect(auto 60px auto auto);
-  background-color: greenyellow;
+    clip: rect(auto calc(var(--foo)) auto auto);
+    background-color: rgb(248, 60, 116);
 }
 
 .right-circle {
-  /*Step3 用"clip:rect"遮罩为半圆*/
-  clip: rect(auto auto auto 60px);
-  background-color: salmon;
+    /*Step3 用"clip:rect"遮罩为半圆*/
+    clip: rect(auto auto auto calc(var(--foo)));
+    background-color: rgb(248, 60, 116);
 }
 
 /*Step11 加入一个圆形覆盖在最上面，形成圆环形式*/
 
+.button_text {
+    width: 60%;
+    height: 60%;
+    margin: 20%;
+    background-color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    background: radial-gradient(deepskyblue, deepskyblue, dodgerblue, dodgerblue);
+    text-align: center;
+    line-height: calc(var(--foo)*1.2);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 100%;
+    font-weight: bold;
+    color: white;
+}
+
 .message {
-  width: 80px;
-  height: 80px;
-  margin: 20px;
-  background-color: #fff;
-  border-radius: 50%;
-  position: absolute;
-  background: radial-gradient(deepskyblue, deepskyblue, dodgerblue, dodgerblue);
-  text-align: center;
-  line-height: 80px;
-  font-family: "Book Antiqua", Palatino, serif;
-  font-size: 20px;
-  text-shadow: 1px 1px 3px #333;
-  color: white;
+    text-align: center;
 }
