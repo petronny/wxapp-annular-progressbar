@@ -3,30 +3,67 @@ const app = getApp()
 Page({
     data: {
         left_circle_transform: -180,
-        left_circle_transition: 0.5,
+        left_circle_transition: 0,
         right_circle_transform: -180,
-        right_circle_transition: 0.5,
+        right_circle_transition: 0,
+        is_put_in: false,    //是否投袋
+        is_give_back: false,    //归还是否成功
         button_text: '点我开启',
-        progressbar_opacity: '0.6',
+        progressbar_opacity: 0.6,
         message: '点击按钮开始归还',
         message_color: 'dodgerblue',
     },
     give_back: function() {
         let _this = this;
-        _this.setData({
-            button_text: '请投袋'
-        })
-        _this.setProgressbar(100);
+        let progressbar = 1;
 
+        let right_transform = _this.data.right_circle_transform;
+
+        // console.log("right_transform === " + right_transform)
+        if (right_transform > -180) {
+            return;
+        }
+        console.log("right_transform === " + right_transform)
+        _this.setData({
+            button_text: '请投袋',
+            message: '请将袋子放入桶中',
+            message_color: 'tomato',
+        })
+        let cur_opacity = _this.data.progressbar_opacity;
+        let opacity_change = 0.002;
+
+        var interval = setInterval(function() {
+            _this.setProgressbar(progressbar);
+            cur_opacity += opacity_change;
+
+            // console.log("cur_opacity === " + cur_opacity)
+            _this.setData({
+                progressbar_opacity: cur_opacity,
+            })
+            progressbar += 1;
+            if (progressbar > 100) {
+                clearInterval(interval);
+                _this.giveBackOk();
+            }
+        }, 30)
+
+    },
+    giveBackOk: function() {
+        let _this = this;
         setTimeout(function() {
             _this.setData({
                 left_circle_transform: -180,
                 left_circle_transition: 0,
                 right_circle_transform: -180,
                 right_circle_transition: 0,
-                button_text: '归还完成'
+                button_text: '归还完成',
+                is_give_back: true,    //归还是否成功
+                progressbar_opacity: 0.6,
+                message: '点击按钮继续归还',
+                message_color: 'dodgerblue',
+
             })
-        }, 2000)
+        }, 600)
     },
     /**
      *设置进度条的变化
@@ -120,18 +157,18 @@ Page({
         }
     },
     onReady: function() {
-        let _this = this;
-        setTimeout(function() {
-            _this.setProgressbar(40)
-            setTimeout(function() {
-                // _this.setProgressbar(60)
-                setTimeout(function() {
-                    // _this.setProgressbar(40)
-                    setTimeout(function() {
-                        // _this.setProgressbar(0)
-                    }, 1000)
-                }, 1000)
-            }, 1000)
-        }, 1000)
+        // let _this = this;
+        // setTimeout(function() {
+        //     _this.setProgressbar(40)
+        //     setTimeout(function() {
+        //         // _this.setProgressbar(60)
+        //         setTimeout(function() {
+        //             // _this.setProgressbar(40)
+        //             setTimeout(function() {
+        //                 // _this.setProgressbar(0)
+        //             }, 1000)
+        //         }, 1000)
+        //     }, 1000)
+        // }, 1000)
     },
 })
