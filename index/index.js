@@ -26,7 +26,7 @@ Page({
         console.log("right_transform === " + right_transform)
         _this.setData({
             button_text: '请投袋',
-            message: '请将袋子放入桶中',
+            message: '请勿关闭小程序',
             message_color: 'tomato',
         })
         let cur_opacity = _this.data.progressbar_opacity;
