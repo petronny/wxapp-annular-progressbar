@@ -6,8 +6,8 @@ Page({
         left_circle_transition: 0,
         right_circle_transform: -180,
         right_circle_transition: 0,
-        is_put_in: false,    //是否投袋
-        is_give_back: false,    //归还是否成功
+        is_put_in: false, //是否投袋
+        is_give_back: false, //归还是否成功
         button_text: '点我开启',
         progressbar_opacity: 0.7,
         message: '点击按钮开始归还',
@@ -15,8 +15,7 @@ Page({
     },
     give_back: function() {
         let _this = this;
-        let progressbar = 1;
-
+        /**检测是否已经发生转动 */
         let right_transform = _this.data.right_circle_transform;
         if (right_transform > -180) {
             return;
@@ -26,22 +25,23 @@ Page({
             message: '请勿关闭小程序',
             message_color: 'tomato',
         })
-        let cur_opacity = _this.data.progressbar_opacity;
-        let opacity_change = 0.002;
 
-        var interval = setInterval(function() {
-            _this.setProgressbar(progressbar);
-            cur_opacity += opacity_change;
-            _this.setData({
-                progressbar_opacity: cur_opacity,
-            })
-            progressbar += 1;
-            if (progressbar > 100) {
-                clearInterval(interval);
-                _this.giveBackOk();
-            }
-        }, 30)
+        _this.setProgressbar(100)
+        _this.setOpacity(100)
+        setTimeout(function() {
+            _this.giveBackOk()
+        }, 2000)
 
+    },
+    setOpacity: function(cur_opacity) {
+        let _this = this;
+
+        let old_opacity = _this.data.progressbar_opacity;
+        cur_opacity = old_opacity + (1 - old_opacity) * cur_opacity / 100;
+        console.log(cur_opacity)
+        _this.setData({
+            progressbar_opacity: cur_opacity,
+        })
     },
     giveBackOk: function() {
         let _this = this;
@@ -53,7 +53,7 @@ Page({
                 right_circle_transition: 0,
                 button_text: '归还完成',
                 is_give_back: true,
-                progressbar_opacity: 0.6,
+                progressbar_opacity: 0.7,
                 message: '点击按钮继续归还',
                 message_color: 'dodgerblue',
 
