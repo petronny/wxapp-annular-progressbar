@@ -1,11 +1,18 @@
+/* 整个css文件需要修改三个数值：--gap，--foo和.message{font-size} */
+
 .progressbar {
     position: relative;
     margin: 30% auto;
-    --gap: 50%;
+    --gap: 40%;
     width: calc(var(--gap));
     padding-bottom: calc(var(--gap));
     height: 0;
-    --foo: 25vw; /* 是（--gap）/10*5 */
+    --foo: 20vw; /* 是（--gap）/10*5 */
+}
+
+.message {
+    text-align: center;
+    font-size: 5vw;
 }
 
 .left-container, .right-container {
@@ -65,11 +72,9 @@
     text-align: center;
     line-height: calc(var(--foo)*1.2);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 100%;
+    font-size: calc(var(--foo)*0.23);
     font-weight: bold;
     color: white;
 }
 
-.message {
-    text-align: center;
-}
+
