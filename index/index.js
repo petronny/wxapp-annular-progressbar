@@ -7,7 +7,7 @@ Page({
         right_circle_transform: -180,
         right_circle_transition: 0,
         button_text: '点我开启',
-        progressbar_opacity: 0.7,
+        progressbar_opacity: 0.5,
         message: '点击按钮开始归还',
         message_color: 'dodgerblue',
     },
@@ -62,7 +62,7 @@ Page({
         _this.setData({
             button_text: '开启中',
             message: '请勿关闭小程序',
-            message_color: 'tomato',
+            message_color: 'rgba(248, 37, 90, 0.884)',
         })
         // 调用开桶接口，并检测结果。
         return true;
@@ -76,7 +76,7 @@ Page({
         _this.setData({
             button_text: '请投袋',
             message: '请勿关闭小程序',
-            message_color: 'tomato',
+            message_color: 'rgba(248, 37, 90, 0.884)',
         })
 
         // 调用投袋接口，并检测结果。
@@ -101,7 +101,7 @@ Page({
 				right_circle_transform: -180,
 				right_circle_transition: 0,
 				button_text: '点我开启',
-				progressbar_opacity: 0.7,
+				progressbar_opacity: 0.5,
 				message: '点击按钮开始归还',
 				message_color: 'dodgerblue',
             })
