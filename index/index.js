@@ -30,7 +30,7 @@ Page({
 
         /**定时开箱检测 */
         let open_bucket = setInterval(function() {
-            let is_open_bucket = _this.openBucket(20);
+            let is_open_bucket = _this.openBucket(50);
             if (is_open_bucket) { //开箱成功
                 clearInterval(open_bucket);
                 /**定时投袋检测 */
@@ -39,11 +39,13 @@ Page({
                     if (is_put_in) { //投袋成功
                         clearInterval(put_in);
 						/**设置投袋成功状态 */
-                        setTimeout(function() {
-                            _this.giveBackOk()
+						setTimeout(function () {
+							_this.setProgressbar(100)
+							_this.setOpacity(100)
                             /**恢复初始状态 */
-                            setTimeout(function() {
-                                _this.giveBackInit();
+							setTimeout(function () {
+								_this.giveBackOk()
+                                // _this.giveBackInit();
                             }, 2000)
                         }, 1000)
                     }
