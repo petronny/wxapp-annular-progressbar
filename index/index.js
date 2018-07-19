@@ -6,12 +6,18 @@ Page({
         left_circle_transition: 0,
         right_circle_transform: -180,
         right_circle_transition: 0,
-        is_put_in: false, //是否投袋
-        is_give_back: false, //归还是否成功
         button_text: '点我开启',
         progressbar_opacity: 0.7,
         message: '点击按钮开始归还',
         message_color: 'dodgerblue',
+    },
+    setOpacity: function(cur_opacity) {
+        let _this = this;
+        let old_opacity = _this.data.progressbar_opacity;
+        cur_opacity = old_opacity + (1 - old_opacity) * cur_opacity / 100;
+        _this.setData({
+            progressbar_opacity: cur_opacity,
+        })
     },
     give_back: function() {
         let _this = this;
@@ -20,43 +26,82 @@ Page({
         if (right_transform > -180) {
             return;
         }
+
+
+        /**定时开箱检测 */
+        let open_bucket = setInterval(function() {
+            let is_open_bucket = _this.openBucket(20);
+            if (is_open_bucket) { //开箱成功
+                clearInterval(open_bucket);
+                /**定时投袋检测 */
+                let put_in = setInterval(function() {
+                    let is_put_in = _this.putInCheck(50);
+                    if (is_put_in) { //投袋成功
+                        clearInterval(put_in);
+						/**设置投袋成功状态 */
+                        setTimeout(function() {
+                            _this.giveBackOk()
+                            /**恢复初始状态 */
+                            setTimeout(function() {
+                                _this.giveBackInit();
+                            }, 2000)
+                        }, 1000)
+                    }
+                }, 1000)
+            }
+        }, 100)
+    },
+    /**打开回收桶 */
+    openBucket: function(progress) {
+
+        let _this = this;
+        _this.setProgressbar(progress)
+        _this.setOpacity(progress)
+        _this.setData({
+            button_text: '开启中',
+            message: '请勿关闭小程序',
+            message_color: 'tomato',
+        })
+        // 调用开桶接口，并检测结果。
+        return true;
+    },
+    putInCheck: function(progress) {
+
+        let _this = this;
+        _this.setProgressbar(progress)
+        _this.setOpacity(progress)
+        console.log('--- 放入袋子 === ' + progress);
         _this.setData({
             button_text: '请投袋',
             message: '请勿关闭小程序',
             message_color: 'tomato',
         })
 
-        _this.setProgressbar(100)
-        _this.setOpacity(100)
-        setTimeout(function() {
-            _this.giveBackOk()
-        }, 2000)
-
-    },
-    setOpacity: function(cur_opacity) {
-        let _this = this;
-
-        let old_opacity = _this.data.progressbar_opacity;
-        cur_opacity = old_opacity + (1 - old_opacity) * cur_opacity / 100;
-        console.log(cur_opacity)
-        _this.setData({
-            progressbar_opacity: cur_opacity,
-        })
+        // 调用投袋接口，并检测结果。
+        return true;
     },
     giveBackOk: function() {
         let _this = this;
+        _this.setProgressbar(100)
+        _this.setOpacity(100)
+        _this.setData({
+            button_text: '归还完成',
+			message: '归还成功，环保值(+1)',
+			message_color: 'dodgerblue',
+        })
+    },
+    giveBackInit: function() {
+        let _this = this;
         setTimeout(function() {
-            _this.setData({
-                left_circle_transform: -180,
-                left_circle_transition: 0,
-                right_circle_transform: -180,
-                right_circle_transition: 0,
-                button_text: '归还完成',
-                is_give_back: true,
-                progressbar_opacity: 0.7,
-                message: '点击按钮继续归还',
-                message_color: 'dodgerblue',
-
+			_this.setData({
+				left_circle_transform: -180,
+				left_circle_transition: 0,
+				right_circle_transform: -180,
+				right_circle_transition: 0,
+				button_text: '点我开启',
+				progressbar_opacity: 0.7,
+				message: '点击按钮开始归还',
+				message_color: 'dodgerblue',
             })
         }, 600)
     },
