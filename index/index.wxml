@@ -7,4 +7,5 @@
     </view>
     <view class="button" bindtap='give_back'>{{button_text}}</view>
 </view>
-<view class="message" style='color:{{message_color}}'>{{message}}</view>
+
+    <view class="message" style='color:{{message_color}}'>{{message}}</view>
