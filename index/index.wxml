@@ -1,8 +1,11 @@
 <view class="progressbar">
   <view class="left-container">
-    <view class="left-circle" style='transform: {{left_circle_transform}}; transition: {{left_circle_transition}}'></view>
+    <view class="left-circle" style='transform: rotate({{left_transform}}deg); transition: all {{left_transition}}s linear; opacity:{{progressbar_opacity}}'></view>
   </view>
   <view class="right-container">
-    <view class="right-circle" style='transform: {{right_circle_transform}}; transition: {{right_circle_transition}}'></view>
+    <view class="right-circle" style='transform: rotate({{right_transform}}deg); transition: all {{right_transition}}s linear; opacity:{{progressbar_opacity}}'></view>
   </view>
+  <form>
+    <button class="button">{{button_text}}</button>
+  </form>
 </view>
