@@ -12,8 +12,8 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "1.0.0",
-	"appid": "touristappid",
-	"projectname": "wxapp-annular-progressbar",
+	"appid": "wxa0677adc287187cf",
+	"projectname": "annular-progressbar",
 	"condition": {
 		"search": {
 			"current": -1,
